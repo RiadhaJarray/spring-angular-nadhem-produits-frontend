@@ -1,0 +1,9 @@
+ng g c binding --skipTests=true --inlineStyle=true : ancienne version //--skipTests=true : pour ne pas generer le fichier .spec
+ng g c binding --style=inline --skip-tests          :novelle version  //--inlineStyle=true : pour ne pas generer le fichier .css
+
+{{ }} : string interpolation ==> read attribute in html from ts.
+
+
+<!-- au lieux de href="/produits" on utilise routerLink="/produits" -->
+
+<!-- pour utiliser le two way binding : il faut ajouter (importer) FormsModule dans la section imports du App.module.ts -->

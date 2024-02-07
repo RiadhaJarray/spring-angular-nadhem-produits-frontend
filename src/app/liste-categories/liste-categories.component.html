@@ -1,0 +1,34 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <!--<app-update-categorie [data]="'donné transmise'" ></app-update-categorie>-->
+        <!--  [categorie]="updatedCat"  : l'attribut categorie est un champ du component "updateCategorie" on lui affect la valeur de l'attribut "updatedCat" du composant actuel "listeCategories"-->
+        <!-- le composant listeCategorie appelle le composant updateCategorie en lui passant un attribut categorie qui est declare @input dans le composant appellé "updateCategorie"-->
+        <app-update-categorie 
+            [categorie]="updatedCat" 
+            (categorieUpdated)= "categorieUpdated($event)"
+            [ajout]="ajoutt">
+        </app-update-categorie>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom Catégorie</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let cat of categories">
+                    <tr>
+                        <td>{{cat.idCat}}</td>
+                        <td>{{cat.nomCat}}</td>
+                        <td><a class="btn btn-success" (click)="updateCat(cat)">Editer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
