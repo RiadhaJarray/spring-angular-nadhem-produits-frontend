@@ -17,6 +17,10 @@ export class AppComponent implements OnInit{
   ){
 
   }
+
+
+  //version avnt jwt 
+  /*
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
     let isloggedin: string;
@@ -27,7 +31,14 @@ export class AppComponent implements OnInit{
       this.router.navigate(['/login']);
     else
       this.authService.setLoggedUserFromLocalStorage(loggedUser);
+  }*/
+
+  ngOnInit () : void {
+    this.authService.loadToken();
+    if (this.authService.getToken()==null || this.authService.isTokenExpired())
+      this.router.navigate(['/login']);
   }
+    
   
 
   onLogout() {

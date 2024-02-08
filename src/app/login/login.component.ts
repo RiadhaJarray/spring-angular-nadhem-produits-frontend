@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit{
   user = new User();
 
   erreur=0;
+  err:number = 0;
 
   constructor(
     private authService : AuthService,
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit{
    // throw new Error('Method not implemented.');
   }
 
-  onLoggedin()
+
+  //version avant ajout du service backend
+  /*onLoggedin()
   {
     console.log(this.user);
 
@@ -34,7 +37,36 @@ export class LoginComponent implements OnInit{
     else
       //alert('Login ou mot de passe incorrecte!');
       this.erreur = 1;
+  }*/
+
+
+  //ancienne version 
+  /*onLoggedin()
+  {
+    this.authService.login(this.user).subscribe((data)=> {
+    let jwToken = data.headers.get('Authorization');
+    this.authService.saveToken(jwToken!);
+    this.router.navigate(['/']);
+    },(erreur)=>{ this.err = 1;
+    });
+  }*/
+
+  //version plus recente 
+  onLoggedin()
+  {
+    this.authService.login(this.user).subscribe({
+      next: (data) => {
+        let jwToken = data.headers.get('Authorization')!;
+        this.authService.saveToken(jwToken);
+        this.router.navigate(['/']); 
+      },
+      error: (err: any) => {
+        this.err = 1; 
+      }
+    });
   }
+
+
 
 
 }
