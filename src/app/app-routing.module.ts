@@ -9,6 +9,8 @@ import { ListeCategoriesComponent } from './liste-categories/liste-categories.co
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { produitGuard } from './produit.guard';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 
 
 //declaration des routes : on met le path et le componennt qui le declare
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path: "listeCategories", component : ListeCategoriesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'app-forbidden', component: ForbiddenComponent},
-  {path: "", redirectTo: "produits", pathMatch: "full" }
+  {path: "", redirectTo: "produits", pathMatch: "full" },
+  {path:'register',component:RegisterComponent},
+  { path: 'verifEmail', component: VerifEmailComponent }
 ];
 
 @NgModule({

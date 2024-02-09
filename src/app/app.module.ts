@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,11 @@ import { UpdateCategorieComponent } from './update-categorie/update-categorie.co
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { tokenInterceptor } from './services/token.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   //ici on declare tous les component de tout le projet
@@ -31,13 +36,20 @@ import { tokenInterceptor } from './services/token.interceptor';
     ListeCategoriesComponent,
     UpdateCategorieComponent,
     LoginComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    RegisterComponent,
+    VerifEmailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    //controle de validite des donnes en teemps reel
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot() // ToastrModule added
+
   ],
   //auparavant on ajoute nos services ici dans providers pour qu'elles soient disponible pour les components 
   //maintenant avec le decorateur @Injectable :) 

@@ -22,6 +22,8 @@ export class AuthService {
 
   private helper = new JwtHelperService();
 
+  public regitredUser : User = new User();
+
 
   constructor(
     private router :Router,
@@ -128,5 +130,23 @@ export class AuthService {
     return this.helper.isTokenExpired(this.token); 
   }
 
+  registerUser(user :User){
+
+    return this.http.post<User>(apiURLLogin+'/register', user, {observe:'response'});
+  }
+    
+
+  setRegistredUser(user : User){
+    this.regitredUser=user;
+  }
+
+  getRegistredUser(){
+    return this.regitredUser;
+  }
+
+  validateEmail(code : string){
+    return this.http.get<User>(apiURLLogin+'/verifyEmail/'+code);
+  }
+    
     
 }
