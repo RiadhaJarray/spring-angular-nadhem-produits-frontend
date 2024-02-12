@@ -9,6 +9,7 @@
                         <th>Prix</th> 
                         <th>Date Création</th>
                         <th>Catégorie</th>
+                        <th>Image</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let produit of produits">
@@ -18,6 +19,10 @@
                         <td>{{produit.prixProduit}}</td>
                         <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
                         <td>{{produit.categorie?.nomCat}}</td>
+                        <td>
+                            <img class="card-img-top img-responsive" src="{{produit.imageStr}}" style = "height :50px;width:100px">
+                        </td>
+                            
                         <td><a *ngIf="authService.isAdmin()"
                             class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</a></td>
                         <td><a *ngIf="authService.isAdmin()"
